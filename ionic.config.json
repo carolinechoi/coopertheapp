@@ -1,5 +1,8 @@
 {
-  "name": "Cooper-googleplay",
-  "integrations": {},
-  "type": "angular"
+  "name": "Cooper",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "9566a87a"
 }

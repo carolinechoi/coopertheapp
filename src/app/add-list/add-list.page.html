@@ -1,0 +1,35 @@
+<ion-content no-bounce padding id="master">
+  <ion-button fill="clear" id="close" (click)="goHome()"><ion-icon name="arrow-back"></ion-icon></ion-button>
+  <!-- <p>Add List</p> -->
+  <div class="list">
+    <div class="first">
+      <ion-item>
+          <ion-input maxlength="20" class="title" type="text" placeholder="Add your title here" [(ngModel)]="list.name"></ion-input>
+      </ion-item>
+    </div>
+
+    <!-- <p class="radio-label">Pick your list colour</p> -->
+      <ion-list lines="none">
+          <!-- <ion-list-header>
+              <ion-label>Pick your list colour</ion-label>
+            </ion-list-header> -->
+          <ion-radio-group [(ngModel)]="list.color">        
+            <ion-item>
+              <ion-label class="labelC">Light Coral</ion-label>
+              <ion-radio id="red" value="#f55f7c"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label class="labelY">Sandy Brown</ion-label>
+                <ion-radio id="yellow" value="#ffcb53"></ion-radio>
+            </ion-item>
+            <ion-item>
+                <ion-label class="labelB">Ice Blue</ion-label>
+                <ion-radio id="blue" value="#85dec8"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+    </div>
+  
+  <div class="button"><ion-button class="add" (click)="createNewList1(list)">ADD LIST</ion-button></div>
+</ion-content>
+

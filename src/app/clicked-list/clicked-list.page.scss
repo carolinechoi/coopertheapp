@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:bold');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+// Colors
+$primary: #3c4857;
+$primary: black;
+$pink: #FED5C8;
+$grey: #5a6169;
+$light-grey: #ccc9c9;
+$pg-bckgrnd: white;
+
+//fonts
+$font: 'Source Sans Pro';
+$fontSmall: 'Source Sans Pro';
+
+    .master{
+        background-color: $pg-bckgrnd;}
+    ion-title{
+        font-family: $fontSmall;
+    }
+    .ite{
+        background-color: $pg-bckgrnd;
+        margin-top: 2%;
+        font-family: $fontSmall;
+        font-size: 16px;
+        width: 104%;
+        z-index: 20;
+        margin-left: -2%;
+        ion-label {
+            padding-right: 10%;
+        }
+    }
+    ion-item-options {
+        ion-icon {
+            color: red;
+            font-size: 20px;
+        }
+    }
+    .bike {
+        z-index: -2;
+    }
+    .bar {
+        height: 80px;
+        ion-title {
+            margin-top: 25px;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 21px;
+            color: white;
+        }
+        ion-button {
+            float: left;
+            position: absolute;
+            font-size: 15px;
+            top: 5px;
+            left: 0%;
+            padding-top: 15px;
+            color: white;
+        }
+    }
+    .disable{
+        color: $light-grey;
+    }
+    ion-fab{
+        ion-fab-button {
+            --box-shadow: 3px 10px 13px 5px #ffffff;
+        }
+        p {
+            color: white;
+        }
+    }
+

@@ -1,0 +1,19 @@
+<ion-content id="master" no-bounce padding>
+  <ion-button fill="clear" id="close" href="/" goBack><ion-icon name="arrow-back"></ion-icon></ion-button>
+
+  <!-- <img id="logo" src="../../assets/icon/favicon.png"> -->
+  <p>Login</p>
+  <p id="sub">Welcome back! Let's get to it.</p>
+
+    <div class="list">
+      <ion-item>
+        <ion-input class="title" type="email" placeholder="Email Address" [(ngModel)]="oldUser.email"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-input class="title" placeholder="Password" clear-input type="password" [(ngModel)]="oldUser.password"></ion-input>
+      </ion-item>
+    </div>
+    
+    <div class="button"><ion-button class="login" (click)="login(oldUser)">LOGIN</ion-button></div>
+</ion-content>

@@ -1,0 +1,25 @@
+<ion-header no-border>
+  <div class="navbar">
+      <ion-button icon-only fill="clear" (click)="goHome()" id="icon">
+        <ion-icon slot="end" name="close"></ion-icon>
+      </ion-button>
+      
+      <p id="title">Settings</p>
+      <p id="sub">bazinga!</p>
+  
+    </div>
+</ion-header>
+
+<ion-content padding class="master">
+<ion-list lines="none">
+  <ion-item class="item" (click)="clearAll()">Clear all lists</ion-item>
+  <ion-item class="item" (click)="logOut()">Log out</ion-item>
+</ion-list>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="secondary">
+    <ion-title class="credit">made with<ion-icon color="danger" name="heart"></ion-icon>by Caroline</ion-title>
+  </ion-toolbar>
+</ion-footer>

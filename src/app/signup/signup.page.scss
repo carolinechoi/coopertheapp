@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:bold');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+// Colors
+$primary: #3c4857;
+$primary: black;
+$pink: #FED5C8;
+$grey: #5a6169;
+$dark: #323942;
+$pg-bckgrnd: white;
+
+//fonts
+$font: 'Source Sans Pro';
+
+    ion-button {
+        font-family: $font;
+    } 
+    p {
+        font-family: $font;
+        font-size: 40px;
+        color: $primary;
+        font-weight: 700;
+        margin-top: 30%;
+        margin-left: 4%;
+    }
+    #sub {
+        margin-left: 16px;
+        font-family: $font;
+        font-size: 17px;
+        color: $grey;
+        margin-top: -30px;
+    }
+    #master{
+    background-color: $pg-bckgrnd;
+    }
+    #close {
+        background-color: $pg-bckgrnd;
+        color: $primary;
+        float: left;
+        position: absolute;
+        font-size: 25px;
+        top: 15px;
+        left: -37%;
+        padding-top: 15px;
+    }
+    .title {
+        text-align: left;
+        font-family: $font;
+        font-weight: bold;
+        font-size: 17px;
+        letter-spacing: 1px;
+        background-color: $pg-bckgrnd;
+        color: black;
+    }
+    .button {
+        display: table;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 96%;
+        .login {
+            --border-radius: 4px;
+            margin-top: 40px;
+            --font-family: $font;
+            --letter-spacing: 2px;
+            --width: 100%;
+            --height: 50px;
+            --border-radius: 4px;
+        }
+    }
+    .list {
+        background-color: $pg-bckgrnd;
+        padding-top: 4%;
+        display: table;
+        margin: 0 auto;
+        width: 90%;
+        ion-item {
+            --padding-top: 13%;
+            --padding-start: -4px;
+            width: 100%;
+            background-color: $pg-bckgrnd;
+            font-size: 15px;
+        }
+    }

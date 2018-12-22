@@ -1,1 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:bold,semi-bold,thin,regular');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+// Colors
+$primary: #3c4857;
+$primary: black;
+$pink: #FED5C8;
+$grey: #5a6169;
+$pg-bckgrnd: #343453;
+$pg-bckgrnd: white;
+
+//fonts
+$font: 'Source Sans Pro';
+
+//card style
+$border-radius: 3px;
+$card-height: 90px;
+$card-color: black;
+
+
+    .master {
+        background-color: $pg-bckgrnd;
+    }
+    .navbar {
+        margin-top: 35px;
+        background-color: $pg-bckgrnd;
+        #title {
+            margin-left: 25px;
+            font-family: $font;
+            font-size: 30px;
+            color: $primary;
+            font-weight: 700;
+        }
+        #sub {
+            margin-left: 27px;
+            font-family: $font;
+            font-size: 20px;
+            color: $grey;
+            margin-top: -30px;
+        }
+        #icon {
+            margin-top: -5px;
+            padding-right: 27px;
+            background-color: $pg-bckgrnd;
+            color: $grey;
+            font-size: 12px;
+            float: right;
+        }
+        .border {
+            background-color: #69e9bf;
+            height: 5px;
+        }
+    }
+    ion-grid {
+        margin-top: -10px;
+        #blueitem, #yellowitem, #pinkitem, #item {
+            height: $card-height;
+        }
+        #pinkitem, .pinkcard {
+            --background: #f55f7c;
+            // --background: $pg-bckgrnd;
+
+        }
+        #yellowitem, .yellowcard {
+            --background: #ffce4e;
+            // --background: $pg-bckgrnd;
+
+        }
+        #blueitem, .card {
+            --background: #69e9bf;
+            // --background: $pg-bckgrnd;
+
+        }
+        .yellowcard, .pinkcard, .card {
+        border-radius: $border-radius;
+        box-shadow: 3px 10px 13px 5px #ffffff;
+        --box-shadow: 0px;
+            img, svg {
+            width: 13px;
+            height: auto;
+            float: left;
+            margin-top: -3px;
+            margin-left: -1px;
+            position: absolute;
+            }
+            #listName {
+            font-family: $font;
+            font-size: 17px;
+            margin-left: 3px;
+            margin-top: 35px;
+            font-weight: 500;
+            color: whitesmoke;
+            }
+            img, ion-icon {
+                width: 20px;
+                position: absolute;
+                right: 15px;
+                top: 35px;
+                color: whitesmoke;
+            }
+        }
+        .bttn {
+            height: $card-height;
+            border-radius: $border-radius;
+            --background: #69e9bf;
+            box-shadow: 3px 10px 13px 5px #ffffff;
+            ion-icon {
+                    font-size: 40px;
+                    align-content: center;
+                    margin-top: 25px;
+                    color: whitesmoke;
+                    text-align: center;
+                    margin-left: 45%;
+                }
+                #add-bttn {
+                    --background: #69e9bf;
+                }
+        }  
+    }
+    .delete {
+        width: 50px;
+        ion-icon {
+            position: absolute;
+            right: 15px;
+            margin-top: -10px;
+            font-size: 40px;
+        }
+    }
 

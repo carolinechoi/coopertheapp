@@ -1,12 +1,124 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-header no-border>
+  <div class="navbar">
+      <ion-button href="/settings" icon-only fill="clear" id="icon">
+        <ion-icon slot="end" name="settings"></ion-icon>
+      </ion-button>
+      
+      <p id="title">Welcome,</p>
+      <p id="sub">this is your to-do list</p>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://beta.ionicframework.com/docs/">docs</a> will be your guide.</p>
-</ion-content>
+      <!-- <div class="border"></div> -->
+  </div>
+</ion-header>
+  
+  <ion-content padding class="master">
+  
+    <ion-grid no-padding>
+      <ion-row>
+        <!-- Blue List -->
+        <ion-col size="12" *ngFor="let list of listRef | async">
+          <ion-card *ngIf="list.color=='#85dec8'" class="card">
+              <ion-item-sliding>
+                <ion-item (click)="itemTapped($event, list.$name=list.name, list.$color=list.color)" lines="none" id="blueitem">
+                  <p id="listName">{{list?.name}}</p>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </ion-item>
+                <ion-item-options side="start">
+                  <ion-item-option (click)="deleteList(list.$key=list.name)" class="delete" color="danger"><ion-icon name="trash"></ion-icon></ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+          </ion-card>
+          <!-- Pink List -->
+          <ion-card *ngIf="list.color=='#f55f7c'" class="pinkcard">
+              <ion-item-sliding>
+                <ion-item (click)="itemTapped($event, list.$name=list.name, list.$color=list.color)" lines="none" id="pinkitem">
+                  <p id="listName">{{list?.name}}</p>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </ion-item>
+                <ion-item-options side="start">
+                  <ion-item-option (click)="deleteList(list.$key=list.name)" class="delete" color="danger"><ion-icon slot="top" name="trash"></ion-icon></ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+          </ion-card>
+
+          <!-- Yellow List -->
+          <ion-card *ngIf="list.color=='#ffcb53'" class="yellowcard">
+              <ion-item-sliding>
+                <ion-item (click)="itemTapped($event, list.$name=list.name, list.$color=list.color)" lines="none" id="yellowitem">
+                  <p id="listName">{{list?.name}}</p>
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </ion-item>
+                <ion-item-options side="start">
+                  <ion-item-option (click)="deleteList(list.$key=list.name)" class="delete" color="danger"><ion-icon slot="top" name="trash"></ion-icon></ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+          </ion-card>
+        </ion-col>
+
+        <ion-col size="12">
+            <ion-card class="bttn">
+              <ion-item (click)="addList()" lines="none" id="add-bttn">
+                <ion-icon name="add"></ion-icon>                    
+              </ion-item>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <!-- <ion-list>
+    <ion-grid no-padding>
+    <ion-row>
+      <ion-col size='6' *ngFor="let list of listRef | async">
+        <ion-card *ngIf="list.color=='#85dec8'" class="card" color="primary"> 
+        <ion-item-sliding no-lines id="sliding">
+          <ion-item button detail-none id="blueitem" (click)="itemTapped($event, list)"> 
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUSSURBVHhe7Z1Lb1VVGIbbKbc6UgnoH8ABxDmhVIsFcWoCE0FqLMR/0DCmODcyRApF/oPIQCwXQ3BENOE3cKlg8NL6fN1vY9IA7Vl77X325X2SN/tw6Pku70p79mXttUeMMcYYY4wxxryclZWVUfQu+mB5efkMOovm0AV0WYrX8V783+n42fiMQpgyYOQ2TJ1CX6M76A/eSyI+qxjn0Ue8tU1pzOvAqDH0BbqBcX+zrYSIja6jaf45pvRmDYyZwJhrbP9cdaxGyPmcTeSeUDn9BBNGMeETdGvVmQZALYvoY16Oqsx+QMPxxfzrqgsNhNruo4Mqt7vQ5E50VX03HmqNPbedKr9b0NgMeqpe28Rj6p5WG+2HZnbQ1LWit/ZCH1ejF7XVTujjfZp4WLTUfujldzZ71V67oPg4qEs+mGsq9LSEJtVmO6Dg4+gv9dA56O0FOqZ2mw2FfoWWVXtniR5hRm03EwqM34zOD8Ya0SscV/vNgsIOoxeqtTdEz6hZB5HUFXtTz4oS+we9x9nkfbJjuFDPGMV0Ztc2FTz4DW2XLcODWlp/0JcLBuSKbBkOFDCjWozAk1Oyp15IvAs9UR3mfx6jt2VTfTAYC0V+sx68mZdN9UDOmDxgXgEDEsdiB2RXtZAorvQ19uJSU8Cje2yqv/JIoqNFSrMReHVEtlUHSW4rn9kAvLop26qBHP7uGBAGZVz25Yfg3yuP2SR4tiD78kLsNwhe+7yptoNnz1H+S7/EjhmFJgEG5HPZmA/i3ijCm0FhQK7LxjwQcDvq7CXZqsG7uGayVXaWh2BTim0SwcNDsrM8BDuvuCadc7KzPAzIHQU1ieDhouwsB7Hi3FXn5lfVDR4uydJyEOgdxTQlwcvdsjUdgnyoeKYkeFl+dgpBziieKQlenpat6RDkrOKZkuDlrGxNhyDe5c0EXs7J1nQI8o3imZKEl7I1HYJcVjxTkvBStqbjAclHrgHxn6xMhJeyNR2C+Es9E3iZ5Uvdu72ZwMssu72xqo7JAF6Wv+OKOJ5pkgkGJMupE59czARe7pKt6RDHp98zgId5Tr8HBPMFqpLgYZ4LVAHB5hTXpJP1Eq4nOZQED/NNciBerH/oaUCJ4F3cLr5FduaBoD8W4c2g4N0PsjEfBI0FI00CeHdSNuaDuHE/uidbDwiePUPVrLNF4NYsz9cU8Kya2xECgsdyrmYwqr35k0FZVCKzAXj1k2yrDpLEurZmE+DVYdlWHeSJc1v3i5TmNfwiy6qHARlXUvMS8CfYL7vqgYSe/PAK8OY72VQfJI1Vqr34zDrw5BF6UzbVC4l99L4OPMl/VD4IFOBVgQReXJItw4MidqBY8bnX4MEDNs14cg/F7EO9XQQTYsH+PbKjGVDQQeRlYpsEhfVtIeV/ULOXHKfAL/swKLT4L2rHc0Uo9Bjq7J+v6A19qnbbAQVPoiX10Bno6Slq5xPdqH8vxXdml5heHqD31F47oYE4Tmn9eS96mGfTnSeE0tA0elS01x6iZnRCbXQLGosTkpdQ4/fCoka4iN5S+d2Ffg/QaKxr20io7S6q93rGsKHvuPJ4BP1c2DB8qOUmmlKJ/QUTxtECigcF10rkRFeiBpVj1sCfmIx3EsWjtSs7sIzYkYOXnyE/vnszYNhWdAjDzrG9hZIPMvlsHMzF9KWINck278TnvoKZu9EEiufqzsrgC2he+lbvzaL4mTgDXX6NKmOMMcYYY4zpLCMj/wH0ZH3i4kqSQgAAAABJRU5ErkJggg==">
+              <p id="listName">{{list?.name}}</p>
+          </ion-item>
+    
+          <ion-item-options side="right">
+            <ion-item-option class="delete" color="danger" (click)="deleteList(list.$key=list.name)"><ion-icon name="trash"></ion-icon>Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+        </ion-card>
+  
+        <ion-card *ngIf="list.color=='#f55f7c'" class="pinkcard">
+            <ion-item-sliding no-lines id="sliding">
+              <ion-button ion-item detail-none id="pinkitem" (click)="itemTapped($event, list)"> 
+                  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUSSURBVHhe7Z1Lb1VVGIbbKbc6UgnoH8ABxDmhVIsFcWoCE0FqLMR/0DCmODcyRApF/oPIQCwXQ3BENOE3cKlg8NL6fN1vY9IA7Vl77X325X2SN/tw6Pku70p79mXttUeMMcYYY4wxxryclZWVUfQu+mB5efkMOovm0AV0WYrX8V783+n42fiMQpgyYOQ2TJ1CX6M76A/eSyI+qxjn0Ue8tU1pzOvAqDH0BbqBcX+zrYSIja6jaf45pvRmDYyZwJhrbP9cdaxGyPmcTeSeUDn9BBNGMeETdGvVmQZALYvoY16Oqsx+QMPxxfzrqgsNhNruo4Mqt7vQ5E50VX03HmqNPbedKr9b0NgMeqpe28Rj6p5WG+2HZnbQ1LWit/ZCH1ejF7XVTujjfZp4WLTUfujldzZ71V67oPg4qEs+mGsq9LSEJtVmO6Dg4+gv9dA56O0FOqZ2mw2FfoWWVXtniR5hRm03EwqM34zOD8Ya0SscV/vNgsIOoxeqtTdEz6hZB5HUFXtTz4oS+we9x9nkfbJjuFDPGMV0Ztc2FTz4DW2XLcODWlp/0JcLBuSKbBkOFDCjWozAk1Oyp15IvAs9UR3mfx6jt2VTfTAYC0V+sx68mZdN9UDOmDxgXgEDEsdiB2RXtZAorvQ19uJSU8Cje2yqv/JIoqNFSrMReHVEtlUHSW4rn9kAvLop26qBHP7uGBAGZVz25Yfg3yuP2SR4tiD78kLsNwhe+7yptoNnz1H+S7/EjhmFJgEG5HPZmA/i3ijCm0FhQK7LxjwQcDvq7CXZqsG7uGayVXaWh2BTim0SwcNDsrM8BDuvuCadc7KzPAzIHQU1ieDhouwsB7Hi3FXn5lfVDR4uydJyEOgdxTQlwcvdsjUdgnyoeKYkeFl+dgpBziieKQlenpat6RDkrOKZkuDlrGxNhyDe5c0EXs7J1nQI8o3imZKEl7I1HYJcVjxTkvBStqbjAclHrgHxn6xMhJeyNR2C+Es9E3iZ5Uvdu72ZwMssu72xqo7JAF6Wv+OKOJ5pkgkGJMupE59czARe7pKt6RDHp98zgId5Tr8HBPMFqpLgYZ4LVAHB5hTXpJP1Eq4nOZQED/NNciBerH/oaUCJ4F3cLr5FduaBoD8W4c2g4N0PsjEfBI0FI00CeHdSNuaDuHE/uidbDwiePUPVrLNF4NYsz9cU8Kya2xECgsdyrmYwqr35k0FZVCKzAXj1k2yrDpLEurZmE+DVYdlWHeSJc1v3i5TmNfwiy6qHARlXUvMS8CfYL7vqgYSe/PAK8OY72VQfJI1Vqr34zDrw5BF6UzbVC4l99L4OPMl/VD4IFOBVgQReXJItw4MidqBY8bnX4MEDNs14cg/F7EO9XQQTYsH+PbKjGVDQQeRlYpsEhfVtIeV/ULOXHKfAL/swKLT4L2rHc0Uo9Bjq7J+v6A19qnbbAQVPoiX10Bno6Slq5xPdqH8vxXdml5heHqD31F47oYE4Tmn9eS96mGfTnSeE0tA0elS01x6iZnRCbXQLGosTkpdQ4/fCoka4iN5S+d2Ffg/QaKxr20io7S6q93rGsKHvuPJ4BP1c2DB8qOUmmlKJ/QUTxtECigcF10rkRFeiBpVj1sCfmIx3EsWjtSs7sIzYkYOXnyE/vnszYNhWdAjDzrG9hZIPMvlsHMzF9KWINck278TnvoKZu9EEiufqzsrgC2he+lbvzaL4mTgDXX6NKmOMMcYYY4zpLCMj/wH0ZH3i4kqSQgAAAABJRU5ErkJggg==">
+                <p id="listName">{{list?.name}}</p>
+                <p>{{list?.$key}}</p>
+              </ion-button>
+        
+              <ion-item-options side="right">
+                <ion-button class="delete" color="danger" (click)="deleteList(list.$key=list.name)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+              </ion-item-options>
+            </ion-item-sliding>
+        </ion-card>
+        
+            <ion-card *ngIf="list.color=='#ffcb53'" class="yellowcard">
+                <ion-item-sliding no-lines id="sliding">
+                  <ion-button ion-item detail-none id="yellowitem" (click)="itemTapped($event, list)"> 
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUSSURBVHhe7Z1Lb1VVGIbbKbc6UgnoH8ABxDmhVIsFcWoCE0FqLMR/0DCmODcyRApF/oPIQCwXQ3BENOE3cKlg8NL6fN1vY9IA7Vl77X325X2SN/tw6Pku70p79mXttUeMMcYYY4wxxryclZWVUfQu+mB5efkMOovm0AV0WYrX8V783+n42fiMQpgyYOQ2TJ1CX6M76A/eSyI+qxjn0Ue8tU1pzOvAqDH0BbqBcX+zrYSIja6jaf45pvRmDYyZwJhrbP9cdaxGyPmcTeSeUDn9BBNGMeETdGvVmQZALYvoY16Oqsx+QMPxxfzrqgsNhNruo4Mqt7vQ5E50VX03HmqNPbedKr9b0NgMeqpe28Rj6p5WG+2HZnbQ1LWit/ZCH1ejF7XVTujjfZp4WLTUfujldzZ71V67oPg4qEs+mGsq9LSEJtVmO6Dg4+gv9dA56O0FOqZ2mw2FfoWWVXtniR5hRm03EwqM34zOD8Ya0SscV/vNgsIOoxeqtTdEz6hZB5HUFXtTz4oS+we9x9nkfbJjuFDPGMV0Ztc2FTz4DW2XLcODWlp/0JcLBuSKbBkOFDCjWozAk1Oyp15IvAs9UR3mfx6jt2VTfTAYC0V+sx68mZdN9UDOmDxgXgEDEsdiB2RXtZAorvQ19uJSU8Cje2yqv/JIoqNFSrMReHVEtlUHSW4rn9kAvLop26qBHP7uGBAGZVz25Yfg3yuP2SR4tiD78kLsNwhe+7yptoNnz1H+S7/EjhmFJgEG5HPZmA/i3ijCm0FhQK7LxjwQcDvq7CXZqsG7uGayVXaWh2BTim0SwcNDsrM8BDuvuCadc7KzPAzIHQU1ieDhouwsB7Hi3FXn5lfVDR4uydJyEOgdxTQlwcvdsjUdgnyoeKYkeFl+dgpBziieKQlenpat6RDkrOKZkuDlrGxNhyDe5c0EXs7J1nQI8o3imZKEl7I1HYJcVjxTkvBStqbjAclHrgHxn6xMhJeyNR2C+Es9E3iZ5Uvdu72ZwMssu72xqo7JAF6Wv+OKOJ5pkgkGJMupE59czARe7pKt6RDHp98zgId5Tr8HBPMFqpLgYZ4LVAHB5hTXpJP1Eq4nOZQED/NNciBerH/oaUCJ4F3cLr5FduaBoD8W4c2g4N0PsjEfBI0FI00CeHdSNuaDuHE/uidbDwiePUPVrLNF4NYsz9cU8Kya2xECgsdyrmYwqr35k0FZVCKzAXj1k2yrDpLEurZmE+DVYdlWHeSJc1v3i5TmNfwiy6qHARlXUvMS8CfYL7vqgYSe/PAK8OY72VQfJI1Vqr34zDrw5BF6UzbVC4l99L4OPMl/VD4IFOBVgQReXJItw4MidqBY8bnX4MEDNs14cg/F7EO9XQQTYsH+PbKjGVDQQeRlYpsEhfVtIeV/ULOXHKfAL/swKLT4L2rHc0Uo9Bjq7J+v6A19qnbbAQVPoiX10Bno6Slq5xPdqH8vxXdml5heHqD31F47oYE4Tmn9eS96mGfTnSeE0tA0elS01x6iZnRCbXQLGosTkpdQ4/fCoka4iN5S+d2Ffg/QaKxr20io7S6q93rGsKHvuPJ4BP1c2DB8qOUmmlKJ/QUTxtECigcF10rkRFeiBpVj1sCfmIx3EsWjtSs7sIzYkYOXnyE/vnszYNhWdAjDzrG9hZIPMvlsHMzF9KWINck278TnvoKZu9EEiufqzsrgC2he+lbvzaL4mTgDXX6NKmOMMcYYY4zpLCMj/wH0ZH3i4kqSQgAAAABJRU5ErkJggg==">
+                    <p id="listName">{{list?.name}}</p>
+                  </ion-button>
+            
+                  <ion-item-options side="right">
+                    <ion-button class="delete" color="danger" (click)="deleteList(list.$key=list.name)"><ion-icon name="trash"></ion-icon>Delete</ion-button>
+                  </ion-item-options>
+                </ion-item-sliding>
+            </ion-card>
+  
+      </ion-col>  
+  
+      <ion-col size="6">
+        <ion-card class="bttn">
+        <ion-button id="add-bttn" color="secondary" (click)="addList()"><ion-icon name="add"></ion-icon></ion-button>                    
+        </ion-card>
+      </ion-col>
+      </ion-row>
+    </ion-grid>  
+    </ion-list> -->
+  
+  </ion-content>
+  

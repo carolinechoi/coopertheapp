@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:bold,semi-bold,thin,regular');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+// Colors
+$primary: #3c4857;
+$primary: black;
+$pink: #FED5C8;
+$grey: #5a6169;
+$pg-bckgrnd: #343453;
+$pg-bckgrnd: white;
+
+//fonts
+$font: 'Source Sans Pro';
+
+//card style
+$border-radius: 3px;
+$card-height: 150px;
+$card-color: black;
+
+    .master {
+        background-color: $pg-bckgrnd;
+    }
+    .navbar {
+        margin-top: 35px;
+        background-color: $pg-bckgrnd;
+        #title {
+            margin-left: 25px;
+            font-family: $font;
+            font-size: 30px;
+            color: $primary;
+            font-weight: 700;
+        }
+        #sub {
+            margin-left: 27px;
+            font-family: $font;
+            font-size: 20px;
+            color: $grey;
+            margin-top: -30px;
+        }
+        #icon {
+            margin-top: -5px;
+            padding-right: 27px;
+            background-color: $pg-bckgrnd;
+            color: $grey;
+            font-size: 12px;
+            float: right;
+        }
+    }
+    ion-footer {
+        width: 100%;
+        text-align: center;
+        .credit {
+            margin-left: 15px;
+            font-family: $font;
+            font-size: 17px;
+        }
+        ion-icon{
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+    }
+    ion-list{
+        .item{
+            margin-left: -5px;
+            font-family: $font;
+            font-size: 18px;
+        }
+    }

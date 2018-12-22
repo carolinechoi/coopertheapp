@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:bold');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+// Colors
+$primary: #3c4857;
+$primary: black;
+$pink: #FED5C8;
+$grey: #5a6169;
+$dark: #323942;
+$pg-bckgrnd: white;
+
+//fonts
+$font: 'Source Sans Pro';
+
+    ion-button {
+        font-family: $font;
+    } 
+    p {
+        font-family: $font;
+        font-size: 40px;
+        color: $primary;
+        font-weight: 700;
+        margin-top: 30%;
+        margin-left: 4%;
+    }
+    #close {
+        background-color: $pg-bckgrnd;
+        color: $primary;
+        float: left;
+        position: absolute;
+        font-size: 25px;
+        top: 15px;
+        left: -1%;
+        padding-top: 15px;
+    }
+    .first {
+        margin-bottom: -10px;
+        .title {
+        text-align: left;
+        font-family: $font;
+        font-weight: bold;
+        font-size: 30px;
+        letter-spacing: 1px;
+        color: black;
+        }
+    }
+    .button {
+        display: table;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 96%;
+        .add {
+            --border-radius: 4px;
+            margin-top: 40px;
+            --font-family: $font;
+            --letter-spacing: 2px;
+            --width: 100%;
+            --height: 50px;
+            --border-radius: 4px;
+        }
+    }
+    .list {
+        background-color: $pg-bckgrnd;
+        padding-top: 10px;
+        display: table;
+        margin: 0 auto;
+        margin-top: 75px;
+        width: 90%;
+        ion-item {
+            --padding-top: 25px;
+            --padding-start: -4px;
+            width: 100%;
+            background-color: $pg-bckgrnd;
+            .labelC, .labelY, .labelB {
+                margin-left: 5px;
+                font-family: $font;
+                font-weight: bold;
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+            .labelC{
+                color: #f55f7c;
+            }
+            .labelY{
+                color: #ffcb53;
+            }
+            .labelB{
+                color: #69e9bf;
+            }
+        }
+        ion-list {
+            margin-top: 10%;
+            background-color: transparent;
+            ion-list-header {
+                letter-spacing: 1px;
+                background-color: transparent;
+                font-family: $font;
+                font-size: 20px;
+                color: $dark;
+                font-weight: 700;
+                margin-left: -14%;
+            }
+            ion-item {
+                width: 100%;
+            }
+            #red {
+                --color-checked: #f55f7c;	
+            }
+            #yellow {
+                --color-checked: #ffcb53;
+            }
+            #blue {
+                --color-checked: #69e9bf;
+            }
+        }
+    }
+
+    .radio-label{
+        letter-spacing: 1px;
+        background-color: $pg-bckgrnd;
+        font-family: $font;
+        font-size: 20px;
+        color: $dark;
+        font-weight: 700;
+        margin-left: 2px;
+        margin-top: 50px;
+        margin-bottom: -50px;
+    }
