@@ -5,6 +5,8 @@ import { ToastController } from '@ionic/angular';
 // Firebase imports
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
+import * as firebase from 'firebase';
 
 // Model import
 import { User } from '../../models/user.interface';
@@ -20,8 +22,15 @@ export class SignupPage implements OnInit {
 
   newUser = {} as User;
 
+  list = {} as List;
+  newListRef$: AngularFireList<List>;
+
+  bullet = {} as Bullet;
+  newBulletRef$: AngularFireList<Bullet>;
+
   constructor(
     private afAuth: AngularFireAuth,
+    private db: AngularFireDatabase,
     private toast: ToastController,
     private router: Router) {
   }
@@ -36,6 +45,28 @@ export class SignupPage implements OnInit {
       console.log(result);
       if (result) {
         const user = this.afAuth.auth.currentUser;
+
+        // Pushing a new list
+        this.newListRef$ = this.db.list(user.uid + '/lists');
+        this.newListRef$.push({
+          name: 'Swipe me right to delete!',
+          color: '#f55f7c'
+        });
+
+        // Pushing an example bullet
+        this.newBulletRef$ = this.db.list(user.uid + '/listsItemsof-/Swipe me right to delete!');
+        this.newBulletRef$.push({
+          description: 'Tap me to check me off!',
+          checked: false
+        });
+        this.newBulletRef$.push({
+          description: 'Press and hold to delete me!',
+          checked: false
+        });
+        this.newBulletRef$.push({
+          description: 'That little round button down there? Use it to add more tasks!',
+          checked: false
+        });
         this.router.navigateByUrl('home/:' + user.uid);
         const toastie = await this.toast.create({
           message: `We're all given the same hours in a day. Are you ready to maximise yours?`,

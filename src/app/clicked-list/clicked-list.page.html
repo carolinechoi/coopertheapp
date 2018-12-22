@@ -19,7 +19,7 @@
 <ion-list lines="none">
     <ion-item class="ite" *ngFor="let bullet of bulletRef | async" (press)="pressEvent($event, bullet.$key=bullet.description)">
       <ion-checkbox slot="end" color="success" [(ngModel)]="bullet.checked" (ionChange)="updateCucumber(bullet)"></ion-checkbox>
-      <ion-label *ngIf="bullet.checked==false" text-wrap>{{bullet?.description}}</ion-label>
+      <ion-label *ngIf="bullet.checked==false" text-wrap>{{bullet?.description}} {{press}}</ion-label>
       <ion-label *ngIf="bullet.checked==true" text-wrap class="disable">{{bullet?.description}}</ion-label>
     </ion-item>
 </ion-list>
