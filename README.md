@@ -1,4 +1,4 @@
-# coopertheapp
+# Cooper The App
 
 Get more done with the Cooper mobile app. Manage, capture, and edit your tasks from anywhere, at any time, with to-dos that sync across all your devices. Cooper's bright colours and minimalistic design help you get tasks done—faster. 
 
